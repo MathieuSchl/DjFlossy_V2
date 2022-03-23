@@ -153,7 +153,7 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
                 ephemeral: true
             });
             setTimeout(async () => {
-                await queue.setRepeatMode(repeatMode);
+                if(repeatMode) await queue.setRepeatMode(repeatMode);
             }, 2500);
         }).catch((err) => {
             console.log(err);
