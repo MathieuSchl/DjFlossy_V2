@@ -21,7 +21,7 @@ module.exports.run = async (client, oldState, newState) => {
     const theAction = detectTheAction(oldState, newState);
     if (!theAction) return;
     if ((theAction === "join" || theAction === "move") && (newState.channel.members.get(client.user.id))) {
-        if (newState.channel.members.size === 2) {
+        if (newState.channel.members.size === 2 || ((newState.member.user.id === client.user.id) && newState.channel.members.size >= 2)) {
             let queue = client.player.createQueue(newState.guild.id);
             await queue.join(newState.channel);
             client.dataBase.get("guild").select(client, newState.guild.id, async (error, results) => {
