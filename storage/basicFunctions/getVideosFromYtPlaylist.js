@@ -1,5 +1,5 @@
 const axios = require('axios');
-const key = "AIzaSyD3MFhK3HZ-K9w_5Wg7HZZEYzgZxUEsltM";
+const key = require("../../config.json").youtubeApiKey;
 
 
 function getVideosTag(playlistId, videoList, nextPageToken, callback) {
