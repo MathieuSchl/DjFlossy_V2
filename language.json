@@ -1,0 +1,264 @@
+{
+    "en": {
+        "NAME": "english",
+        "FLAG": "🇬🇧",
+        "globalFlags": {
+            "USER_CANT_USE_COMMAND": "you are not allowed to use this command 😊",
+            "SEND_DM_TO_USER": "A message was sent to you in private"
+        },
+        "command": {
+            "language": {
+                "NAME": "language",
+                "DESCRIPTION": "Change the server language for the bot messages",
+                "ONLY_GUILD_OWNER": "Only the server owner can change the language of the bot",
+                "CHANNEL_LANGUAGE_CREATED": "A channel to change the language of the bot has been created",
+                "CHANNEL_LANGUAGE_ALREADY_CREATED": "A channel to change the language of the bot has already been created",
+                "PLEASE_SELECT_LANGUAGE": "Please select a language",
+                "DESC_OPTION_SELECT_LANG": "Select English as the language"
+            },
+            "addMusics": {
+                "NAME": "addsong",
+                "DESCRIPTION": "Adds a music or a playlist to the database",
+                "DESCRIPTION_OPTION_URL": "Url of the music or the playlist",
+                "OPTION_NAME_PLAYLIST": "playlist",
+                "INVALID_URL": "The url is invalid",
+                "PLAYLIST_ACCEPTED": "The playlist <§Url§> is now saved"
+            },
+            "play": {
+                "NAME": "play",
+                "DESCRIPTION": "Add a music to the queue",
+                "DESCRIPTION_OPTION_URL": "Url of the music",
+                "OPTION_NAME_SHUFFLE": "shuffle",
+                "OPTION_DESCRIPTION_SHUFFLE": "Mix the list of music. Default: true.",
+                "USER_NOT_IN_VOICE_CHANNEL": "You must be in a vocal channel",
+                "INVALID_URL": "The url is invalid",
+                "UNRECONIZED_URL_FORMAT": "Unrecognized url format",
+                "CUSTOM_PLAYLIST_YT_PLAYED": "The youtube playlist has been selected",
+                "MUSIC_ADD": "Music added to the queue"
+            },
+            "next": {
+                "NAME": "next",
+                "DESCRIPTION": "Go to the next music in the queue",
+                "USER_NOT_IN_VOICE_CHANNEL": "You must be in the same vocal channel as <§botTag§>",
+                "BOT_NOT_IN_VOICE_CHANNEL": "<§botTag§> is not connected to a voice room",
+                "SKIP_MUSIC": "The music has been changed"
+            },
+            "onme": {
+                "NAME": "onme",
+                "DESCRIPTION": "Move the bot to your current channel",
+                "USER_NOT_IN_VOICE_CHANNEL": "You are not connected to a voice channel",
+                "BOT_CHANGED_CHANNEL": "<§botTag§> has been moved"
+            },
+            "np": {
+                "NAME": "np",
+                "DESCRIPTION": "Now Playing. Gives the information of the current music",
+                "NO_MUSIC_PLAYED": "<§botTag§> is not playing music"
+            }
+        },
+        "selectMenu": {
+            "selectLang": {
+                "REPLY_TITLE": "The language has been changed",
+                "REPLY_DESCRIPTION": "The language of the `<#>` server is now English"
+            }
+        },
+        "textChannel": {
+            "control_panel": {
+                "COMMANDS_LIST": "List of commands",
+                "COMMANDS_DESC": "Click on the reactions to take the corresponding action:\n\n👋 => Allow to ping the bot\n💣 => Allow to turn off the bot",
+                "BUTTON_DESTROY_TEXT": "Destroy"
+            },
+            "musicPannel": {
+                "COMMANDS_TITLE": "DjFlossy control panel",
+                "COMMANDS_DESC": "Controlling playlists"
+            }
+        },
+        "basicFunctions": {
+            "stopProgram": {
+                "SHUTTING_DOWN": "Shutting down the bot"
+            }
+        },
+        "guildCreateAction": {
+            "createChannelForFlossy": {
+                "CATEGORY_NAME": "DjFlossy",
+                "TEXT_CHANNEL_NAME": "Pannel",
+                "VOICE_CHANNEL_NAME": "DjFlossy"
+            }
+        }
+    },
+    "fr": {
+        "NAME": "français",
+        "FLAG": "🇫🇷",
+        "globalFlags": {
+            "USER_CANT_USE_COMMAND": "tu n'est pas autorisé à utiliser cette commande 😊",
+            "SEND_DM_TO_USER": "Un message ta été envoyé en privé"
+        },
+        "command": {
+            "language": {
+                "NAME": "langue",
+                "DESCRIPTION": "Change la langue du server pour les messages du bot",
+                "ONLY_GUILD_OWNER": "Seul le propriétaire du serveur peux changer la langue du bot",
+                "CHANNEL_LANGUAGE_CREATED": "Un channel pour changer la langue du bot a été créé",
+                "CHANNEL_LANGUAGE_ALREADY_CREATED": "Un channel pour changer la langue du bot a déjà été créé",
+                "PLEASE_SELECT_LANGUAGE": "Merci de sélectionner une langue",
+                "DESC_OPTION_SELECT_LANG": "Sélectionnez le Français comme langue"
+            },
+            "addMusics": {
+                "NAME": "addsong",
+                "DESCRIPTION": "Ajoute une musique ou une playlist à la base de donnée",
+                "DESCRIPTION_OPTION_URL": "Url de la musique ou de la playlist",
+                "OPTION_NAME_PLAYLIST": "playlist",
+                "INVALID_URL": "The url is invalid",
+                "PLAYLIST_ACCEPTED": "La playlist <§Url§> est sauvegardé"
+            },
+            "play": {
+                "NAME": "play",
+                "DESCRIPTION": "Ajoute la musique dans la file d'attente",
+                "DESCRIPTION_OPTION_URL": "Url de la musique",
+                "OPTION_NAME_SHUFFLE": "mélanger",
+                "OPTION_DESCRIPTION_SHUFFLE": "Mélange la liste des musiques. Par défault: True.",
+                "USER_NOT_IN_VOICE_CHANNEL": "Vous devez être dans un salon vocal",
+                "INVALID_URL": "L'url est invalide",
+                "UNRECONIZED_URL_FORMAT": "Format d'url non reconnu",
+                "CUSTOM_PLAYLIST_YT_PLAYED": "La playlist youtube à été selectionné",
+                "MUSIC_ADD": "Musique ajouté à la file d'attente"
+            },
+            "next": {
+                "NAME": "next",
+                "DESCRIPTION": "Passe à la musique suivante de la playlist",
+                "BOT_NOT_IN_VOICE_CHANNEL": "<§botTag§> n'est pas connecté à un salon vocal",
+                "USER_NOT_IN_VOICE_CHANNEL": "Vous devez être dans le même salon vocal que <§botTag§>",
+                "SKIP_MUSIC": "La musique a été changé"
+            },
+            "onme": {
+                "NAME": "onme",
+                "DESCRIPTION": "Déplacer le bot sur votre salon vocal actuel",
+                "USER_NOT_IN_VOICE_CHANNEL": "Vous n'êtes pas connecté à un salon vocal",
+                "BOT_CHANGED_CHANNEL": "<§botTag§> a été déplacé"
+            },
+            "np": {
+                "NAME": "np",
+                "DESCRIPTION": "Now Playing. Donne les informations de la musique en cours",
+                "NO_MUSIC_PLAYED": "<§botTag§> n'est pas en train de jouer de la music"
+            }
+        },
+        "selectMenu": {
+            "selectLang": {
+                "REPLY_TITLE": "La langue à été changé",
+                "REPLY_DESCRIPTION": "La langue du serveur `<#>` est maintenant le français"
+            },
+            "musicPannel": {
+                "CHANGE_PLAYLIST_MESSAGE_1": "La playlist ",
+                "CHANGE_PLAYLIST_MESSAGE_2": " a été selectionné"
+            }
+        },
+        "textChannel": {
+            "control_panel": {
+                "COMMANDS_LIST": "Liste des commandes",
+                "COMMANDS_DESC": "Cliquez sur les réactions pour faire l'action correspondante:\n\n👋 => Permets de ping le bot\n💣 => Permets d'éteindre le bot",
+                "BUTTON_DESTROY_TEXT": "Arrêt"
+            },
+            "musicPannel": {
+                "COMMANDS_TITLE": "Panneau de contrôle de DjFlossy",
+                "COMMANDS_DESC": "Contrôler les playlists"
+            }
+        },
+        "basicFunctions": {
+            "stopProgram": {
+                "SHUTTING_DOWN": "Arrêt du bot"
+            }
+        },
+        "guildCreateAction": {
+            "createChannelForFlossy": {
+                "CATEGORY_NAME": "DjFlossy",
+                "TEXT_CHANNEL_NAME": "Pannel",
+                "VOICE_CHANNEL_NAME": "DjFlossy"
+            }
+        }
+    },
+    "de": {
+        "NAME": "deutsch",
+        "FLAG": "🇩🇪",
+        "globalFlags": {
+            "USER_CANT_USE_COMMAND": "sie dürfen diesen Befehl nicht verwenden 😊",
+            "SEND_DM_TO_USER": "Es wurde eine private Nachricht an Sie gesendet"
+        },
+        "command": {
+            "language": {
+                "NAME": "sprache",
+                "DESCRIPTION": "Ändern Sie die Server-Sprache für die Bot-Nachrichten",
+                "ONLY_GUILD_OWNER": "Nur der Serverbesitzer kann die Sprache des Bots ändern",
+                "CHANNEL_LANGUAGE_CREATED": "Es wurde ein Kanal zum Ändern der Sprache des Bots eingerichtet",
+                "CHANNEL_LANGUAGE_ALREADY_CREATED": "Ein Kanal zum Ändern der Sprache des Bots ist bereits eingerichtet worden",
+                "PLEASE_SELECT_LANGUAGE": "Bitte wählen Sie eine Sprache",
+                "DESC_OPTION_SELECT_LANG": "Deutsch als Sprache wählen"
+            },
+            "addMusics": {
+                "NAME": "addsong",
+                "DESCRIPTION": "Fügt Musik oder eine Wiedergabe zur Datenbank hinzu",
+                "DESCRIPTION_OPTION_URL": "Url des Musikstücks oder der Wiedergabe",
+                "OPTION_NAME_PLAYLIST": "wiedergabe",
+                "INVALID_URL": "Die Url ist ungültig",
+                "PLAYLIST_ACCEPTED": "Die Wiedergabeliste <§Url§> ist nun gespeichert"
+            },
+            "play": {
+                "NAME": "play",
+                "DESCRIPTION": "Hinzufügen einer Musik zur Warteschlange",
+                "DESCRIPTION_OPTION_URL": "Url der Musik",
+                "OPTION_NAME_SHUFFLE": "mischen",
+                "OPTION_DESCRIPTION_SHUFFLE": "Mische die Musikliste. Standard: wahr.",
+                "USER_NOT_IN_VOICE_CHANNEL": "Sie müssen in einem Gesangssalon sein",
+                "INVALID_URL": "Die Url ist ungültig",
+                "UNRECONIZED_URL_FORMAT": "Unerkanntes Url-Format",
+                "CUSTOM_PLAYLIST_YT_PLAYED": "Die youtube-Playlist wurde ausgewählt",
+                "MUSIC_ADD": "Musik zur Warteschlange hinzugefügt"
+            },
+            "next": {
+                "NAME": "next",
+                "DESCRIPTION": "Zur nächsten Musik in der Warteschlange wechseln",
+                "USER_NOT_IN_VOICE_CHANNEL": "Sie müssen sich im selben Vokalsalon wie <§botTag§> befinden",
+                "BOT_NOT_IN_VOICE_CHANNEL": "<§botTag§> ist nicht mit einem Sprachraum verbunden",
+                "SKIP_MUSIC": "Die Musik wurde geändert"
+            },
+            "onme": {
+                "NAME": "onme",
+                "DESCRIPTION": "Verschieben Sie den Bot auf Ihren aktuellen Kanal",
+                "USER_NOT_IN_VOICE_CHANNEL": "Sie sind nicht mit einem Sprachraum verbunden",
+                "BOT_CHANGED_CHANNEL": "<§botTag§> wurde verschoben"
+            },
+            "np": {
+                "NAME": "np",
+                "DESCRIPTION": "Now Playing. Gibt die Informationen der aktuellen Musik wieder",
+                "NO_MUSIC_PLAYED": "<§botTag§> spielt keine Musik"
+            }
+        },
+        "selectMenu": {
+            "selectLang": {
+                "REPLY_TITLE": "Die Sprache wurde geändert",
+                "REPLY_DESCRIPTION": "Die Sprache des `<#>`-Servers ist jetzt Deutsch"
+            }
+        },
+        "textChannel": {
+            "control_panel": {
+                "COMMANDS_LIST": "Liste der Aufträge",
+                "COMMANDS_DESC": "Klicken Sie auf die Reaktionen, um die entsprechende Aktion auszuführen:\n\n👋 => Erlauben, den Bot anzupingen\n💣 => Erlauben, den Bot auszuschalten",
+                "BUTTON_DESTROY_TEXT": "Stopp"
+            },
+            "musicPannel": {
+                "COMMANDS_TITLE": "DjFlossy Control Panel",
+                "COMMANDS_DESC": "Playlists kontrollieren"
+            }
+        },
+        "basicFunctions": {
+            "stopProgram": {
+                "SHUTTING_DOWN": "Anhalten des Bots"
+            }
+        },
+        "guildCreateAction": {
+            "createChannelForFlossy": {
+                "CATEGORY_NAME": "DjFlossy",
+                "TEXT_CHANNEL_NAME": "Pannel",
+                "VOICE_CHANNEL_NAME": "DjFlossy"
+            }
+        }
+    }
+}

@@ -1,0 +1,183 @@
+const Interaction = require("../../discordToolsBox/interaction");
+const Guild = require("../../discordToolsBox/guild");
+const getLanguageDataFunc = require("../../basicFunctions/getLanguageData");
+const {
+    RepeatMode
+} = require('discord-music-player');
+
+
+function makeid(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
+}
+
+const optionToTrad = ["OPTION_NAME_SHUFFLE"];
+const getOptionsNames = () => {
+    const languageData = require("../../../language.json");
+    const language = Object.keys(languageData);
+    const res = {};
+    for (let index = 0; index < language.length; index++) {
+        const element = language[index];
+        res[element] = {};
+        res[element]["command"] = {};
+        for (let index = 0; index < optionToTrad.length; index++) {
+            const optionName = optionToTrad[index];
+            if (!res[element]["command"][optionName]) res[element]["command"][optionName] = [];
+            const optionTrad = languageData[element]["command"]["play"][optionName];
+            res[element]["command"][optionName].push(optionTrad);
+        }
+    }
+    return res;
+}
+const optionsNames = getOptionsNames();
+
+function getValueFromOption(options, tag, lg) {
+    for (const option of options) {
+        if (optionsNames[lg]["command"][tag].includes(option.name)) {
+            return option.value;
+        }
+    }
+    return null;
+}
+
+function getLanguageData(language, tag) {
+    return getLanguageDataFunc.get({
+        language: language,
+        category: "command",
+        type: "play",
+        tag: tag
+    })
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
+
+async function startSong(client, interaction, playList, user, replyLanguage) {
+    let queue = client.player.getQueue(interaction.guild.id) == null ? client.player.createQueue(interaction.guild.id) : client.player.getQueue(interaction.guild.id);
+    await queue.setRepeatMode(RepeatMode.DISABLED);
+    await client.basicFunctions.get("startMusic").addAllSongsFromList(queue, playList, user, async () => {
+        // Code qui est exécuté après le changement de token (création de playlist)
+        if (queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
+        return;
+    }, async () => {
+        // Code qui est exécuté après que la première musique de la playlist ait été ajoutée
+        if (queue.songs[0].requestedBy.id === client.user.id) await queue.skip(1);
+        Interaction.reply(interaction, {
+            content: getLanguageData(replyLanguage, "CUSTOM_PLAYLIST_YT_PLAYED"),
+            ephemeral: true
+        });
+        return;
+    });
+}
+
+
+module.exports.run = async (client, interaction, user, userData, guild, guildData) => {
+    const guildLanguage = guildData.v_language;
+    const memberLanguage = userData.v_language;
+    const replyLanguage = memberLanguage ? memberLanguage : guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
+
+    const url = interaction.options.get("value").value;
+    const optionShuffle = getValueFromOption(interaction.options["_hoistedOptions"], "OPTION_NAME_SHUFFLE", guildLanguage);
+    const needToShuffle = optionShuffle === null ? true : optionShuffle;
+    if (!url) return;
+
+
+    const member = await Guild.fetchMembers(interaction.guild, user.id);
+    if (!member.voice.channelId) {
+        Interaction.reply(interaction, {
+            content: getLanguageData(replyLanguage, "USER_NOT_IN_VOICE_CHANNEL"),
+            ephemeral: true
+        });
+        return;
+    }
+
+    if (url.startsWith('https://www.youtube.com/watch?v=')) {
+        const query = url.split("watch?v=")[1];
+        const videoTocken = query.split("&")[0];
+        startSong(client, interaction, [videoTocken], user, replyLanguage);
+    } else if (url.startsWith('https://youtu.be/')) {
+        const query = url.split("https://youtu.be/")[1];
+        const videoTocken = query.split("?")[0];
+        startSong(client, interaction, [videoTocken], user, replyLanguage);
+    } else if (url.startsWith('https://www.youtube.com/playlist?list=') || url.startsWith('https://youtube.com/playlist?list=')) {
+        const playlistTocken = url.split("playlist?list=")[1];
+        client.basicFunctions.get("getVideosFromYtPlaylist").run(playlistTocken, async (res) => {
+            if (!res) {
+                Interaction.reply(interaction, {
+                    content: getLanguageData(replyLanguage, "INVALID_URL"),
+                    ephemeral: true
+                });
+                return;
+            }
+            if (needToShuffle) res = shuffle(res);
+
+            startSong(client, interaction, res, user, replyLanguage);
+        });
+    } else if (url.startsWith('https') || url.startsWith('http')) {
+        Interaction.reply(interaction, {
+            content: getLanguageData(replyLanguage, "UNRECONIZED_URL_FORMAT"),
+            ephemeral: true
+        });
+    } else {
+        let queue = client.player.getQueue(interaction.guild.id) == null ? client.player.createQueue(interaction.guild.id) : client.player.getQueue(interaction.guild.id);
+        await queue.setRepeatMode(RepeatMode.DISABLED);
+        if (queue.data == null) queue.data = {};
+        const token = makeid(10);
+        queue.data.token = token;
+        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
+        await queue.play(url, {
+            requestedBy: user
+        }).catch((err) => {
+            console.log(err);
+            console.log(url);
+        })
+        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.skip(1);
+        Interaction.reply(interaction, {
+            content: getLanguageData(replyLanguage, "MUSIC_ADD"),
+            ephemeral: true
+        });
+    }
+}
+
+
+module.exports.help = {
+    name: "index"
+}
+
+module.exports.getCommandData = (client, data) => {
+    let language = data.language;
+    language = language ? language : client.config.defaultGuildLanguage ? client.config.defaultGuildLanguage : "en";
+    return {
+        name: getLanguageData(language, "NAME"),
+        description: getLanguageData(language, "DESCRIPTION"),
+        options: [{
+            type: "STRING",
+            name: "value",
+            description: getLanguageData(language, "DESCRIPTION_OPTION_URL"),
+            required: true
+        }, {
+            type: "BOOLEAN",
+            name: getLanguageData(language, "OPTION_NAME_SHUFFLE"),
+            description: getLanguageData(language, "OPTION_DESCRIPTION_SHUFFLE")
+        }]
+    }
+}
+
+module.exports.getPermissions = (client, data) => {
+    if (data.clientCommand) return false;
+    return [];
+}

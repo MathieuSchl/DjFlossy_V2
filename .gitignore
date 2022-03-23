@@ -1,0 +1,6 @@
+ConsoleFile.txt
+config.json
+storage/data
+storage/dataBase/dbConfig.json
+tests
+node_modules
