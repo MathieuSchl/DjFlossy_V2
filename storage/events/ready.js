@@ -9,9 +9,6 @@ module.exports.run = async (client) => {
     client.basicFunctions.get("activity").run(client);
 
     client.basicFunctions.get("startGuildPlayer").allGuilds(client);
-
-    const guild = await client.guilds.fetch("816759562854072321");
-    client.basicFunctions.get("loadCommands").testCommands(guild);
 }
 
 module.exports.help = {

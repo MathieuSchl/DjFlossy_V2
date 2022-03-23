@@ -71,12 +71,12 @@ async function startSong(client, interaction, playList, user, replyLanguage) {
     await queue.setRepeatMode(RepeatMode.DISABLED);
     await client.basicFunctions.get("startMusic").addAllSongsFromList(queue, playList, user, async () => {
         // Code qui est exécuté après le changement de token (création de playlist)
-        if (queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
+        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
         return;
     }, async () => {
         // Code qui est exécuté après que la première musique de la playlist ait été ajoutée
-        if (queue.songs[0].requestedBy.id === client.user.id) await queue.skip(1);
-        Interaction.reply(interaction, {
+        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.skip(1);
+        Interaction.editReply(interaction, {
             content: getLanguageData(replyLanguage, "CUSTOM_PLAYLIST_YT_PLAYED"),
             ephemeral: true
         });
@@ -104,6 +104,9 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
         });
         return;
     }
+    await Interaction.deferReply(interaction, {
+        ephemeral: true
+    })
 
     if (url.startsWith('https://www.youtube.com/watch?v=')) {
         const query = url.split("watch?v=")[1];
@@ -117,7 +120,7 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
         const playlistTocken = url.split("playlist?list=")[1];
         client.basicFunctions.get("getVideosFromYtPlaylist").run(playlistTocken, async (res) => {
             if (!res) {
-                Interaction.reply(interaction, {
+                Interaction.editReply(interaction, {
                     content: getLanguageData(replyLanguage, "INVALID_URL"),
                     ephemeral: true
                 });
@@ -146,7 +149,7 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
             console.log(url);
         })
         if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.skip(1);
-        Interaction.reply(interaction, {
+        Interaction.editReply(interaction, {
             content: getLanguageData(replyLanguage, "MUSIC_ADD"),
             ephemeral: true
         });
