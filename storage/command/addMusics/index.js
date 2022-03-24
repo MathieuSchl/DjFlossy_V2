@@ -64,37 +64,36 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
         const dbPrefix = await client.dataBase.get("dbConfiguration").getDbPrefix(client);
         for (const music of res) {
             try {
-                let id = await new Promise((res) => {
-                    client.dataBase.get("connection").exec(client.db, 'SELECT i_id AS id FROM `musicslist` WHERE v_tagName = ?', [dbPrefix + "musicslist", music], async (error, results, fields) => {
-                        if (error) throw error;
-                        res(results.length !== 1 ? null : results[0].id);
+                const id = await new Promise((res) => {
+                    client.dataBase.get("connection").exec(client.db, 'INSERT INTO ?? (`v_tagName`) VALUES (?)', [dbPrefix + "musicslist", music], async (error, results, fields) => {
+                        if (error && error.code === "ER_DUP_ENTRY") {
+                            client.dataBase.get("connection").exec(client.db, 'SELECT i_id AS id FROM ?? WHERE v_tagName = ?', [dbPrefix + "musicslist", music], async (error, results, fields) => {
+                                if (error) throw error;
+                                else if (results.length === 0) res(null);
+                                else res(results[0].id);
+                            })
+                        } else if (error) throw error;
+                        client.dataBase.get("connection").exec(client.db, "SELECT LAST_INSERT_ID() AS 'id'", [], async (error, results, fields) => {
+                            if (error) throw error;
+                            else res(results[0].id);
+                        });
                     });
                 })
-                if (id == null) {
-                    id = await new Promise((res) => {
-                        client.dataBase.get("connection").exec(client.db, 'INSERT INTO ?? (`v_tagName`) VALUES (?)', [dbPrefix + "musicslist", music], async (error, results, fields) => {
+                if (id) {
+                    await new Promise((res) => {
+                        client.dataBase.get("connection").exec(client.db, "SELECT 1 FROM ?? WHERE i_idTag = (SELECT i_id AS id FROM ?? WHERE v_name = ?) AND i_idMusic = ?", [dbPrefix + "musicscorrelation", dbPrefix + "musicTag", valuePlaylist, id], async (error, results, fields) => {
                             if (error) throw error;
-                            client.dataBase.get("connection").exec(client.db, "SELECT LAST_INSERT_ID() AS 'id'", [], async (error, results, fields) => {
+                            if (results.length !== 0) {
+                                res()
+                                return;
+                            }
+                            client.dataBase.get("connection").exec(client.db, "INSERT INTO ?? (`i_idTag`, `i_idMusic`) VALUES ((SELECT i_id AS id FROM ?? WHERE v_name = ?), ?)", [dbPrefix + "musicscorrelation", dbPrefix + "musicTag", valuePlaylist, id], async (error, results, fields) => {
                                 if (error) throw error;
-                                res(results[0].id);
+                                res();
                             });
                         });
                     })
                 }
-                await new Promise((res) => {
-                    client.dataBase.get("connection").exec(client.db, "SELECT 1 FROM ?? WHERE i_idTag = (SELECT i_id AS id FROM ?? WHERE v_name = ?) AND i_idMusic = ?", [dbPrefix + "musicscorrelation", dbPrefix + "musicTag", valuePlaylist, id], async (error, results, fields) => {
-                        if (error) throw error;
-                        if (results.length !== 0) {
-                            res()
-                            return;
-                        }
-                        client.dataBase.get("connection").exec(client.db, "INSERT INTO ?? (`i_idTag`, `i_idMusic`) VALUES ((SELECT i_id AS id FROM ?? WHERE v_name = ?), ?)", [dbPrefix + "musicscorrelation", dbPrefix + "musicTag", valuePlaylist, id], async (error, results, fields) => {
-                            if (error) throw error;
-                            res();
-                        });
-                    });
-                })
-
             } catch (error) {
                 console.log(error);
             }
