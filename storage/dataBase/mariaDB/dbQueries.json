@@ -7,9 +7,9 @@
     "guildMembers": "CREATE TABLE ??.?? ( `i_id` INT(5) NOT NULL AUTO_INCREMENT , `v_idUser` VARCHAR(18) NOT NULL , `v_idGuild` VARCHAR(18) NOT NULL , `t_allowedSpecialChannel` TINYINT NOT NULL , `t_muted` TINYINT NOT NULL DEFAULT '0' , `v_language` VARCHAR(2) NULL , `v_data` VARCHAR(500) NOT NULL DEFAULT '{}' , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;",
     "user": "CREATE TABLE ??.?? ( `v_id` VARCHAR(18) NOT NULL , `v_language` VARCHAR(2) NULL , `t_isbot` TINYINT NOT NULL , `v_data` VARCHAR(1000) NOT NULL DEFAULT '{}' , PRIMARY KEY (`v_id`)) ENGINE = InnoDB;",
     "musicTag": "CREATE TABLE ??.?? ( `i_id` INT NOT NULL AUTO_INCREMENT , `v_name` VARCHAR(25) NOT NULL , `v_emoji` VARCHAR(25) NOT NULL , `i_user` INT(18) DEFAULT NULL , `b_enable` BOOLEAN NOT NULL , `v_data` VARCHAR(500) NOT NULL DEFAULT '{}' , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;",
-    "musicsList": "CREATE TABLE ??.`musicsList` ( `i_id` INT(6) NOT NULL AUTO_INCREMENT , `v_tagName` VARCHAR(12) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
-    "musicsCorrelation": "CREATE TABLE ??.`musicsCorrelation` ( `i_id` INT NOT NULL AUTO_INCREMENT , `i_idTag` INT(3) NOT NULL , `i_idMusic` INT(6) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
+    "musicsList": "CREATE TABLE ??.`musicslist` ( `i_id` INT(6) NOT NULL AUTO_INCREMENT , `v_tagName` VARCHAR(12) NOT NULL , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;",
+    "musicsCorrelation": "CREATE TABLE ??.`musicscorrelation` ( `i_id` INT NOT NULL AUTO_INCREMENT , `i_idTag` INT(3) NOT NULL , `i_idMusic` INT(6) NOT NULL , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;",
 
-    "specialVoiceChannel": "CREATE TABLE ??.?? ( `id` VARCHAR(18) NOT NULL , `type` VARCHAR(25) NOT NULL , `data` VARCHAR(1000) NOT NULL DEFAULT '{}' , PRIMARY KEY (`id`)) ENGINE = InnoDB;",
-    "userData": "CREATE TABLE ??.?? ( `id` VARCHAR(37) NOT NULL , `admin` BOOLEAN NOT NULL DEFAULT FALSE , `muteShield` BOOLEAN NOT NULL DEFAULT FALSE , `deafShield` BOOLEAN NOT NULL DEFAULT FALSE , `disconnectShield` BOOLEAN NOT NULL DEFAULT FALSE , `data` VARCHAR(500) NOT NULL DEFAULT '{}' , PRIMARY KEY (`id`)) ENGINE = InnoDB;"
+    "specialVoiceChannel": "CREATE TABLE ??.?? ( `id` VARCHAR(18) NOT NULL , `type` VARCHAR(25) NOT NULL , `data` VARCHAR(1000) NOT NULL DEFAULT '{}' , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;",
+    "userData": "CREATE TABLE ??.?? ( `id` VARCHAR(37) NOT NULL , `admin` BOOLEAN NOT NULL DEFAULT FALSE , `muteShield` BOOLEAN NOT NULL DEFAULT FALSE , `deafShield` BOOLEAN NOT NULL DEFAULT FALSE , `disconnectShield` BOOLEAN NOT NULL DEFAULT FALSE , `data` VARCHAR(500) NOT NULL DEFAULT '{}' , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;"
 }
