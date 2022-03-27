@@ -236,11 +236,3 @@ Canneaux textuels spéciaux : Les canneaux textuels spéciaux sont des canneaux 
 Canneaux vocal spéciaux : Les canneaux vocal spéciaux sont des canneaux qui ont un fonctionnement différent. Ils ont des actions spécifiques.
 
 Version : 3.0.0
-
-
-
-
-RDCLAK5uy_lS3iRvbdbS0jUbbAgIjRKkVo1vmpbFdfg > Electro
-RDCLAK5uy_ncxIUlmiR-o-eAe6-jDasfC0RTtNosCk0 > Electro
-
-RDCLAK5uy_meyw-vhfp_mOKgmZ9NbZrdgjd6sM7VMaU > pop

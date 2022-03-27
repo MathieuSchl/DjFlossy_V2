@@ -31,7 +31,7 @@
                 "OPTION_NAME_SHUFFLE": "shuffle",
                 "OPTION_DESCRIPTION_SHUFFLE": "Mix the list of music. Default: true.",
                 "OPTION_NAME_REPEAT_MODE": "loop",
-                "OPTION_DESCRIPTION_REPEAT_MODE": "Défini si la musique va être rejoué ou non",
+                "OPTION_DESCRIPTION_REPEAT_MODE": "Defines if the music will be played or not",
                 "OPTION_REPEAT_MODE_OPTION_DISABLED": "Disabled",
                 "OPTION_REPEAT_MODE_OPTION_SONG": "Music",
                 "OPTION_REPEAT_MODE_OPTION_QUEUE": "Playlist",
@@ -112,7 +112,7 @@
                 "DESCRIPTION": "Ajoute une musique ou une playlist à la base de donnée",
                 "DESCRIPTION_OPTION_URL": "Url de la musique ou de la playlist",
                 "OPTION_NAME_PLAYLIST": "playlist",
-                "INVALID_URL": "The url is invalid",
+                "INVALID_URL": "L'URL de la playlist est invalid",
                 "PLAYLIST_ACCEPTED": "La playlist <§Url§> est sauvegardé"
             },
             "play": {

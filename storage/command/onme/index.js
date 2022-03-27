@@ -41,7 +41,7 @@ async function changeChannel(client, guild, VCTarget) {
 module.exports.run = async (client, interaction, user, userData, guild, guildData) => {
     const guildLanguage = guildData.v_language;
     const memberLanguage = userData.v_language;
-    const replyLanguage = memberLanguage ? memberLanguage : guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
+    const replyLanguage = guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
 
     const member = await Guild.fetchMembers(interaction.guild, user.id);
     if (!member.voice.channelId) {
