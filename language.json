@@ -148,7 +148,7 @@
             "np": {
                 "NAME": "np",
                 "DESCRIPTION": "Now Playing. Donne les informations de la musique en cours",
-                "NO_MUSIC_PLAYED": "<§botTag§> n'est pas en train de jouer de la music"
+                "NO_MUSIC_PLAYED": "<§botTag§> n'est pas en train de jouer de la musique"
             }
         },
         "selectMenu": {
