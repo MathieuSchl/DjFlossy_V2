@@ -20,7 +20,7 @@ function detectTheAction(oldState, newState) {
 module.exports.run = async (client, oldState, newState) => {
     const theAction = detectTheAction(oldState, newState);
     if (!theAction) return;
-    if ((theAction === "join" || theAction === "move") && (newState.channel.members.get(client.user.id))) {
+    if (false && (theAction === "join" || theAction === "move") && (newState.channel.members.get(client.user.id))) {
         if (newState.channel.members.size === 2 || ((newState.member.user.id === client.user.id) && newState.channel.members.size >= 2)) {
             let queue = client.player.createQueue(newState.guild.id);
             await queue.join(newState.channel);
@@ -34,6 +34,8 @@ module.exports.run = async (client, oldState, newState) => {
         if (oldState.channel.members.size < 2) {
             let queue = client.player.createQueue(oldState.guild.id);
             queue.stop();
+            await queue.connection.leave();
+            return;
             client.dataBase.get("guild").select(client, oldState.guild.id, async (error, result) => {
                 if (error) throw error;
                 if (!result[0] || !result[0].v_data.musicVoiceChannel || result[0].v_data.musicVoiceChannel === oldState.channel.id) return;

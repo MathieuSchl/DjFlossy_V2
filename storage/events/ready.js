@@ -8,7 +8,7 @@ module.exports.run = async (client) => {
     await client.basicFunctions.get("cronTab").run(client);
     client.basicFunctions.get("activity").run(client);
 
-    client.basicFunctions.get("startGuildPlayer").allGuilds(client);
+    //client.basicFunctions.get("startGuildPlayer").allGuilds(client);
 }
 
 module.exports.help = {

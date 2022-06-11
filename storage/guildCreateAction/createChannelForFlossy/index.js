@@ -12,6 +12,8 @@ function getLanguageData(language, tag) {
 }
 
 module.exports.run = async (client, guild) => {
+    //This is disabled
+    return;
     client.dataBase.get("guild").select(client, guild.id, async (error, result, fields) => {
         if (error) throw error;
         const lg = result[0].v_language ? result[0].v_language : config.defaultGuildLanguage ? config.defaultGuildLanguage : "en";
@@ -55,11 +57,6 @@ module.exports.run = async (client, guild) => {
                     if (error) throw error;
 
                     client.textChannel["musicPannel"].get("reload").reload(client, textChannel, lg);
-                    await client.basicFunctions.get("wait").run(5000);
-                    client.dataBase.get("guild").select(client, textChannel.guild.id, async (error, results) => {
-                        if (error) throw error;
-                        await client.basicFunctions.get("startGuildPlayer").oneGuild(client, results[0]);
-                    })
                 });
             })
         });
