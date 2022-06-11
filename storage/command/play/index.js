@@ -69,6 +69,31 @@ function shuffle(a) {
 async function startSong(client, interaction, playList, repeatMode, user, replyLanguage) {
     let queue = client.player.getQueue(interaction.guild.id) == null ? client.player.createQueue(interaction.guild.id) : client.player.getQueue(interaction.guild.id);
     await queue.setRepeatMode(RepeatMode.DISABLED);
+    if (queue.connection == null) await queue.join(interaction.member.voice.channel);
+    for (let index = 0; index < playList.length && index < 50; index++) {
+        const element = playList[index];
+        if (!queue.destroyed) await queue.play(element, {
+            requestedBy: user
+        }).catch((err) => {
+            console.log(err);
+            console.log(element);
+        })
+        if (index === 0) {
+            if (playList.length === 1) {
+                Interaction.editReply(interaction, {
+                    content: getLanguageData(replyLanguage, "MUSIC_ADD"),
+                    ephemeral: true
+                });
+            } else {
+                Interaction.editReply(interaction, {
+                    content: getLanguageData(replyLanguage, "CUSTOM_PLAYLIST_YT_PLAYED"),
+                    ephemeral: true
+                });
+            }
+        }
+    }
+    if (repeatMode) await queue.setRepeatMode(repeatMode);
+    return;
     await client.basicFunctions.get("startMusic").addAllSongsFromList(queue, playList, user, async () => {
         // Code qui est exécuté après le changement de token (création de playlist)
         if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
@@ -141,9 +166,7 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
         let queue = client.player.getQueue(interaction.guild.id) == null ? client.player.createQueue(interaction.guild.id) : client.player.getQueue(interaction.guild.id);
         await queue.setRepeatMode(RepeatMode.DISABLED);
         if (queue.data == null) queue.data = {};
-        const token = makeid(10);
-        queue.data.token = token;
-        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
+        if (queue.connection == null) await queue.join(interaction.member.voice.channel);
         await queue.play(url, {
             requestedBy: user
         }).then(async () => {
@@ -153,7 +176,7 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
                 ephemeral: true
             });
             setTimeout(async () => {
-                if(repeatMode) await queue.setRepeatMode(repeatMode);
+                if (repeatMode) await queue.setRepeatMode(repeatMode);
             }, 2500);
         }).catch((err) => {
             console.log(err);
