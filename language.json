@@ -31,7 +31,7 @@
                 "OPTION_NAME_SHUFFLE": "shuffle",
                 "OPTION_DESCRIPTION_SHUFFLE": "Mix the list of music. Default: true.",
                 "OPTION_NAME_REPEAT_MODE": "loop",
-                "OPTION_DESCRIPTION_REPEAT_MODE": "Défini si la musique va être rejoué ou non",
+                "OPTION_DESCRIPTION_REPEAT_MODE": "Defines if the music will be played or not",
                 "OPTION_REPEAT_MODE_OPTION_DISABLED": "Disabled",
                 "OPTION_REPEAT_MODE_OPTION_SONG": "Music",
                 "OPTION_REPEAT_MODE_OPTION_QUEUE": "Playlist",
@@ -64,6 +64,10 @@
             "selectLang": {
                 "REPLY_TITLE": "The language has been changed",
                 "REPLY_DESCRIPTION": "The language of the `<#>` server is now English"
+            },
+            "musicPannel": {
+                "CHANGE_PLAYLIST_MESSAGE_1": "The playlist ",
+                "CHANGE_PLAYLIST_MESSAGE_2": " has been selected"
             }
         },
         "textChannel": {
@@ -220,7 +224,12 @@
                 "INVALID_URL": "Die Url ist ungültig",
                 "UNRECONIZED_URL_FORMAT": "Unerkanntes Url-Format",
                 "CUSTOM_PLAYLIST_YT_PLAYED": "Die youtube-Playlist wurde ausgewählt",
-                "MUSIC_ADD": "Musik zur Warteschlange hinzugefügt"
+                "MUSIC_ADD": "Musik zur Warteschlange hinzugefügt",
+                "OPTION_NAME_REPEAT_MODE": "Schleife",
+                "OPTION_DESCRIPTION_REPEAT_MODE": "Legt fest, ob die Musik erneut abgespielt wird oder nicht",
+                "OPTION_REPEAT_MODE_OPTION_DISABLED": "Deaktiviert",
+                "OPTION_REPEAT_MODE_OPTION_SONG": "Musik",
+                "OPTION_REPEAT_MODE_OPTION_QUEUE": "Playlist"
             },
             "next": {
                 "NAME": "next",
@@ -245,6 +254,10 @@
             "selectLang": {
                 "REPLY_TITLE": "Die Sprache wurde geändert",
                 "REPLY_DESCRIPTION": "Die Sprache des `<#>`-Servers ist jetzt Deutsch"
+            },
+            "musicPannel": {
+                "CHANGE_PLAYLIST_MESSAGE_1": "Die Playlist ",
+                "CHANGE_PLAYLIST_MESSAGE_2": " wurde ausgewählt"
             }
         },
         "textChannel": {
