@@ -2,7 +2,7 @@ let indexMess = 0;
 //  V Pararameters V
 
 const activities = [{
-    name: 'I am beyond death ! AGAIN !',
+    name: 'Let\'s go play musics',
     type: 'PLAYING'
 }]
 
