@@ -39,7 +39,6 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
     }
 
     const nbLangChannels = await new Promise((resolve) => {
-
         client.dataBase.get("textChannel").selectATypeOfChannelInGuild(client, guild.id, "changeLang", async (error, results) => {
             if (error) console.log(error);
             resolve(results.length);

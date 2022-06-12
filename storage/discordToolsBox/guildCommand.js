@@ -1,9 +1,14 @@
+
+
 module.exports.create = async (guild, data, permissions, callback) => {
     return await new Promise((resolve) => {
         guild.commands.create(data).then((command) => {
+            if (callback) callback(command);
+            resolve(command);
+            /*
+            Bot cant no longer change commands permissions
+
             if (!permissions) {
-                if (callback) callback(command);
-                resolve(command);
             } else {
                 guild.commands.permissions.set({
                     command: command.id,
@@ -17,6 +22,7 @@ module.exports.create = async (guild, data, permissions, callback) => {
                     resolve(false);
                 });
             }
+            */
         }).catch((err) => {
             if (err.code !== 30034) console.log(err);
             if (callback) callback(false);

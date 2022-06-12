@@ -56,7 +56,7 @@ module.exports.testCommands = async (guild) => {
             guild: guild
         });
         if (commandData) {
-            GuildCommands.create(guild, commandData, permissions);
+            await GuildCommands.create(guild, commandData, permissions);
         }
     }
 };
