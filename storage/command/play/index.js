@@ -110,11 +110,26 @@ async function startSong(client, interaction, playList, repeatMode, user, replyL
     });
 }
 
+module.exports.startPlaylist = startPlaylist
+async function startPlaylist(client, interaction, playlistTocken, needToShuffle, repeatMode, user, replyLanguage) {
+    client.basicFunctions.get("getVideosFromYtPlaylist").run(playlistTocken, async (res) => {
+        if (!res) {
+            Interaction.editReply(interaction, {
+                content: getLanguageData(replyLanguage, "INVALID_URL"),
+                ephemeral: true
+            });
+            return;
+        }
+        if (needToShuffle) res = shuffle(res);
+
+        startSong(client, interaction, res, repeatMode, user, replyLanguage);
+    });
+}
+
 
 module.exports.run = async (client, interaction, user, userData, guild, guildData) => {
     const guildLanguage = guildData.v_language;
-    const memberLanguage = userData.v_language;
-    const replyLanguage = memberLanguage ? memberLanguage : guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
+    const replyLanguage =  guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
 
     const url = interaction.options.get("value").value;
     const repeatMode = interaction.options.get("loop") ? RepeatMode[interaction.options.get("loop").value] : null;
@@ -145,18 +160,7 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
         startSong(client, interaction, [videoTocken], repeatMode, user, replyLanguage);
     } else if (url.startsWith('https://www.youtube.com/playlist?list=') || url.startsWith('https://youtube.com/playlist?list=')) {
         const playlistTocken = url.split("playlist?list=")[1];
-        client.basicFunctions.get("getVideosFromYtPlaylist").run(playlistTocken, async (res) => {
-            if (!res) {
-                Interaction.editReply(interaction, {
-                    content: getLanguageData(replyLanguage, "INVALID_URL"),
-                    ephemeral: true
-                });
-                return;
-            }
-            if (needToShuffle) res = shuffle(res);
-
-            startSong(client, interaction, res, repeatMode, user, replyLanguage);
-        });
+        startPlaylist(client, interaction, playlistTocken, needToShuffle, repeatMode, user, replyLanguage);
     } else if (url.startsWith('https') || url.startsWith('http')) {
         Interaction.reply(interaction, {
             content: getLanguageData(replyLanguage, "UNRECONIZED_URL_FORMAT"),

@@ -58,6 +58,10 @@
                 "NAME": "np",
                 "DESCRIPTION": "Now Playing. Gives the information of the current music",
                 "NO_MUSIC_PLAYED": "<§botTag§> is not playing music"
+            },
+            "playPrivatePlaylist": {
+                "NAME": "private_playlist",
+                "DESCRIPTION": "Allows to choose and play parso playlists for the bot"
             }
         },
         "selectMenu": {
@@ -153,6 +157,13 @@
                 "NAME": "np",
                 "DESCRIPTION": "Now Playing. Donne les informations de la musique en cours",
                 "NO_MUSIC_PLAYED": "<§botTag§> n'est pas en train de jouer de la music"
+            },
+            "playPrivatePlaylist": {
+                "NAME": "playlist_perso",
+                "DESCRIPTION": "Permet de choisir et de jouer des playlists parsonnels pour le bot",
+                "PLACEHOLDER": "Sélectionnez votre playlist",
+                "NO_PLAYLIST_REGISTERED": "Vous n'avez pas enregistré de playlist pour l'instant\n`Fonctionnalité non-disponible pour l'instant`",
+                "SELECT_YOUR_PLAYLIST": "Sélectionnez la playlist que vous voulez écouter"
             }
         },
         "selectMenu": {
@@ -248,6 +259,10 @@
                 "NAME": "np",
                 "DESCRIPTION": "Now Playing. Gibt die Informationen der aktuellen Musik wieder",
                 "NO_MUSIC_PLAYED": "<§botTag§> spielt keine Musik"
+            },
+            "playPrivatePlaylist": {
+                "NAME": "playlist_personal",
+                "DESCRIPTION": "Ermöglicht die Auswahl und das Abspielen von parsonnellen Playlists für den Bot"
             }
         },
         "selectMenu": {
