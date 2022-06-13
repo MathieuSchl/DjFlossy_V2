@@ -61,7 +61,18 @@
             },
             "playPrivatePlaylist": {
                 "NAME": "private_playlist",
-                "DESCRIPTION": "Allows to choose and play parso playlists for the bot"
+                "DESCRIPTION": "Allows to choose and play parso playlists for the bot",
+                "PLACEHOLDER": "Select your playlist",
+                "NO_PLAYLIST_REGISTERED": "You have not saved any playlist for the moment\nTo do this, use the command `/add_playlist`",
+                "SELECT_YOUR_PLAYLIST": "Select the playlist you want to listen to"
+            },
+            "addPlaylist": {
+                "NAME": "add_playlist",
+                "DESCRIPTION": "Allows you to save a personal playlist",
+                "DESCRIPTION_OPTION_URL": "Url of the playlist",
+                "INVALID_URL": "The entered url is invalid <§url§>",
+                "PLAYLIST_ALREADY_EXIST": "The playlist <§url§> is already saved",
+                "PLAYLIST_ADDED":"The playlist <§url§> has been added"
             }
         },
         "selectMenu": {
@@ -162,8 +173,16 @@
                 "NAME": "playlist_perso",
                 "DESCRIPTION": "Permet de choisir et de jouer des playlists parsonnels pour le bot",
                 "PLACEHOLDER": "Sélectionnez votre playlist",
-                "NO_PLAYLIST_REGISTERED": "Vous n'avez pas enregistré de playlist pour l'instant\n`Fonctionnalité non-disponible pour l'instant`",
+                "NO_PLAYLIST_REGISTERED": "Vous n'avez pas enregistré de playlist pour l'instant\nPour cela utilisez la commande `/ajouter_playlist`",
                 "SELECT_YOUR_PLAYLIST": "Sélectionnez la playlist que vous voulez écouter"
+            },
+            "addPlaylist": {
+                "NAME": "ajouter_playlist",
+                "DESCRIPTION": "Permet de sauvegarder une playlist personel'",
+                "DESCRIPTION_OPTION_URL": "Url de la playlist",
+                "INVALID_URL": "L'url saisie est invalide <§url§>",
+                "PLAYLIST_ALREADY_EXIST": "La playlist <§url§> est déjà enregistrée",
+                "PLAYLIST_ADDED":"La playlist <§url§> a été ajoutée"
             }
         },
         "selectMenu": {
@@ -262,7 +281,18 @@
             },
             "playPrivatePlaylist": {
                 "NAME": "playlist_personal",
-                "DESCRIPTION": "Ermöglicht die Auswahl und das Abspielen von parsonnellen Playlists für den Bot"
+                "DESCRIPTION": "Ermöglicht die Auswahl und das Abspielen von parsonnellen Playlists für den Bot",
+                "PLACEHOLDER": "Wählen Sie Ihre Playlist aus",
+                "NO_PLAYLIST_REGISTERED": "Sie haben noch keine Playlist aufgenommen\nVerwenden Sie dazu den Befehl `/playlist_hinzufugen`",
+                "SELECT_YOUR_PLAYLIST": "Wählen Sie die Playlist, die Sie abspielen möchten"
+            },
+            "addPlaylist": {
+                "NAME": "playlist_hinzufugen",
+                "DESCRIPTION": "Ermöglicht das Speichern einer persönlichen Playlist",
+                "DESCRIPTION_OPTION_URL": "Url der Playlist",
+                "INVALID_URL": "Die eingegebene URL ist ungültig <§url§>.",
+                "PLAYLIST_ALREADY_EXIST": "Die Playlist <§url§> ist bereits gespeichert",
+                "PLAYLIST_ADDED":"Die Playlist <§url§> wurde hinzugefügt"
             }
         },
         "selectMenu": {
