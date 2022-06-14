@@ -8,7 +8,10 @@
   },
   "scripts": {
     "start": "node index.js 2>&1 | tee ConsoleFile.txt",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node index.js 2>&1 | tee ConsoleFile.txt",
+    "test": "node checkLanguage.js",
+    "prepareDb": "node importSqlTables.js",
+    "startOnServer": "node importSqlTables.js && node index.js"
   },
   "repository": {
     "type": "git",

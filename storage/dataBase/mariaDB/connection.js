@@ -17,11 +17,35 @@ function isFunction(functionToCheck) {
     return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
 }
 
-module.exports.open = (callback) => {
+module.exports.open = open;
+
+function open(callback) {
     const db = getDb();
 
     db.connect(function (err) {
-        if (err){
+        if (err) {
+            if (err.code === "ER_BAD_DB_ERROR") {
+                db.end();
+                const dbNoDb = mysql.createConnection({
+                    host: dbConfig.host,
+                    user: dbConfig.user,
+                    password: dbConfig.password,
+                    connectTimeout: 10000
+                });
+                dbNoDb.connect(async function (err) {
+                    if (err) {
+                        console.log("\n\nerror for the sql connection");
+                        throw err.code;
+                    }
+                    await exec(dbNoDb, "CREATE DATABASE IF NOT EXISTS ??", [dbConfig.database], () => {
+                        dbNoDb.end();
+                        open((db) => {
+                            callback(db);
+                        })
+                    });
+                });
+                return;
+            }
             console.log("\n\nerror for the sql connection");
             throw err.code;
         }
@@ -36,7 +60,9 @@ module.exports.close = (db) => {
     return;
 }
 
-module.exports.exec = (db, query, options, callback) => {
+module.exports.exec = exec;
+
+function exec(db, query, options, callback) {
     if (callback == null && isFunction(options)) {
         callback = options;
         options = [];
