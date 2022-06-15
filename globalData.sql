@@ -16,7 +16,7 @@ CREATE TABLE `specialVoiceChannel` ( `id` VARCHAR(18) NOT NULL , `type` VARCHAR(
 
 CREATE TABLE `musicTag` ( `i_id` INT NOT NULL AUTO_INCREMENT , `v_name` VARCHAR(25) NOT NULL , `v_emoji` VARCHAR(25) NOT NULL , `i_user` INT(18) DEFAULT NULL , `b_enable` BOOLEAN NOT NULL , `v_data` VARCHAR(500) NOT NULL DEFAULT '{}' , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;
 
-CREATE TABLE `musicsList` ( `i_id` INT NOT NULL AUTO_INCREMENT , `v_name` VARCHAR(25) NOT NULL , `v_emoji` VARCHAR(25) NOT NULL , `i_user` INT(18) DEFAULT NULL , `b_enable` BOOLEAN NOT NULL , `v_data` VARCHAR(500) NOT NULL DEFAULT '{}' , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;
+CREATE TABLE `musicsList` ( `i_id` INT(6) NOT NULL AUTO_INCREMENT , `v_tagName` VARCHAR(12) NOT NULL unique, PRIMARY KEY (`i_id`)) ENGINE = InnoDB;
 
 CREATE TABLE `musicsCorrelation` ( `i_id` INT NOT NULL AUTO_INCREMENT , `i_idTag` INT(3) NOT NULL , `i_idMusic` INT(6) NOT NULL , PRIMARY KEY (`i_id`)) ENGINE = InnoDB;
 
