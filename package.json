@@ -27,7 +27,7 @@
     "@discordjs/voice": "^0.7.5",
     "axios": "^0.24.0",
     "cron": "^1.8.2",
-    "discord-music-player": "^8.3.1",
+    "discord-music-player": "^8.3.2",
     "discord.js": "^13.1.0",
     "ffmpeg": "^0.0.4",
     "fs": "^0.0.1-security",
