@@ -1,10 +1,19 @@
-const Client = require("../../discordToolsBox/client");
-const Channel = require("../../discordToolsBox/channel");
-const Message = require("../../discordToolsBox/message");
+const Guild = require("../../discordToolsBox/guild");
 const Interaction = require("../../discordToolsBox/interaction");
+const getLanguageDataFunc = require("../../basicFunctions/getLanguageData");
 const {
     RepeatMode
 } = require('discord-music-player');
+
+
+function getLanguageData(language, tag) {
+    return getLanguageDataFunc.get({
+        language: language,
+        category: "command",
+        type: "playPrivatePlaylist",
+        tag: tag
+    })
+}
 
 
 module.exports.run = async (client, interaction) => {
@@ -18,8 +27,17 @@ module.exports.run = async (client, interaction) => {
             resolve(results[0])
         });
     })
+
     const guildLanguage = guildData.v_language;
     const replyLanguage = guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
+    const member = await Guild.fetchMembers(interaction.guild, interaction.user.id);
+    if (!member.voice.channelId) {
+        Interaction.reply(interaction, {
+            content: getLanguageData(replyLanguage, "USER_NOT_IN_VOICE_CHANNEL"),
+            ephemeral: true
+        });
+        return;
+    }
 
     await Interaction.deferReply(interaction, {
         ephemeral: true

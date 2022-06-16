@@ -6,17 +6,6 @@ const {
 } = require('discord-music-player');
 
 
-function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-    }
-    return result;
-}
-
 const optionToTrad = ["OPTION_NAME_SHUFFLE"];
 const getOptionsNames = () => {
     const languageData = require("../../../language.json");
@@ -66,6 +55,7 @@ function shuffle(a) {
     return a;
 }
 
+module.exports.startSong = startSong
 async function startSong(client, interaction, playList, repeatMode, user, replyLanguage) {
     let queue = client.player.getQueue(interaction.guild.id) == null ? client.player.createQueue(interaction.guild.id) : client.player.getQueue(interaction.guild.id);
     await queue.setRepeatMode(RepeatMode.DISABLED);
@@ -94,20 +84,6 @@ async function startSong(client, interaction, playList, repeatMode, user, replyL
     }
     if (repeatMode && !queue.destroyed) await queue.setRepeatMode(repeatMode);
     return;
-    await client.basicFunctions.get("startMusic").addAllSongsFromList(queue, playList, user, async () => {
-        // Code qui est exécuté après le changement de token (création de playlist)
-        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.clearQueue();
-        return;
-    }, async () => {
-        // Code qui est exécuté après que la première musique de la playlist ait été ajoutée
-        if (queue.songs.length != 0 && queue.songs[0].requestedBy.id === client.user.id) await queue.skip(1);
-        if (repeatMode) await queue.setRepeatMode(repeatMode);
-        Interaction.editReply(interaction, {
-            content: getLanguageData(replyLanguage, "CUSTOM_PLAYLIST_YT_PLAYED"),
-            ephemeral: true
-        });
-        return;
-    });
 }
 
 module.exports.startPlaylist = startPlaylist
@@ -136,7 +112,6 @@ module.exports.run = async (client, interaction, user, userData, guild, guildDat
     const optionShuffle = getValueFromOption(interaction.options["_hoistedOptions"], "OPTION_NAME_SHUFFLE", guildLanguage);
     const needToShuffle = optionShuffle === null ? true : optionShuffle;
     if (!url) return;
-
 
     const member = await Guild.fetchMembers(interaction.guild, user.id);
     if (!member.voice.channelId) {

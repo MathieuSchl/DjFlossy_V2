@@ -63,8 +63,17 @@
                 "NAME": "private_playlist",
                 "DESCRIPTION": "Allows to choose and play parso playlists for the bot",
                 "PLACEHOLDER": "Select your playlist",
+                "USER_NOT_IN_VOICE_CHANNEL": "You are not connected to a voice channel",
                 "NO_PLAYLIST_REGISTERED": "You have not saved any playlist for the moment\nTo do this, use the command `/add_playlist`",
                 "SELECT_YOUR_PLAYLIST": "Select the playlist you want to listen to"
+            },
+            "playPlaylist": {
+                "NAME": "playlist",
+                "DESCRIPTION": "Allows you to choose and play playlists for the bot",
+                "PLACEHOLDER": "Select your playlist",
+                "OPTION_NAME_PLAYLIST": "playlist",
+                "OPTION_DESCRIPTION_PLAYLIST": "Select the playlist you want to listen to",
+                "USER_NOT_IN_VOICE_CHANNEL": "You are not connected to a voice channel"
             },
             "addPlaylist": {
                 "NAME": "add_playlist",
@@ -72,7 +81,7 @@
                 "DESCRIPTION_OPTION_URL": "Url of the playlist",
                 "INVALID_URL": "The entered url is invalid <§url§>",
                 "PLAYLIST_ALREADY_EXIST": "The playlist <§url§> is already saved",
-                "PLAYLIST_ADDED":"The playlist <§url§> has been added"
+                "PLAYLIST_ADDED": "The playlist <§url§> has been added"
             }
         },
         "selectMenu": {
@@ -173,8 +182,17 @@
                 "NAME": "playlist_perso",
                 "DESCRIPTION": "Permet de choisir et de jouer des playlists parsonnels pour le bot",
                 "PLACEHOLDER": "Sélectionnez votre playlist",
+                "USER_NOT_IN_VOICE_CHANNEL": "Vous n'êtes pas connecté à un salon vocal",
                 "NO_PLAYLIST_REGISTERED": "Vous n'avez pas enregistré de playlist pour l'instant\nPour cela utilisez la commande `/ajouter_playlist`",
                 "SELECT_YOUR_PLAYLIST": "Sélectionnez la playlist que vous voulez écouter"
+            },
+            "playPlaylist": {
+                "NAME": "playlist",
+                "DESCRIPTION": "Permet de choisir et de jouer des playlists pour le bot",
+                "PLACEHOLDER": "Sélectionnez votre playlist",
+                "OPTION_NAME_PLAYLIST": "playlist",
+                "OPTION_DESCRIPTION_PLAYLIST": "Sélectionnez la playlist que vous voulez écouter",
+                "USER_NOT_IN_VOICE_CHANNEL": "Vous n'êtes pas connecté à un salon vocal"
             },
             "addPlaylist": {
                 "NAME": "ajouter_playlist",
@@ -182,7 +200,7 @@
                 "DESCRIPTION_OPTION_URL": "Url de la playlist",
                 "INVALID_URL": "L'url saisie est invalide <§url§>",
                 "PLAYLIST_ALREADY_EXIST": "La playlist <§url§> est déjà enregistrée",
-                "PLAYLIST_ADDED":"La playlist <§url§> a été ajoutée"
+                "PLAYLIST_ADDED": "La playlist <§url§> a été ajoutée"
             }
         },
         "selectMenu": {
@@ -283,8 +301,17 @@
                 "NAME": "playlist_personal",
                 "DESCRIPTION": "Ermöglicht die Auswahl und das Abspielen von parsonnellen Playlists für den Bot",
                 "PLACEHOLDER": "Wählen Sie Ihre Playlist aus",
+                "USER_NOT_IN_VOICE_CHANNEL": "Sie sind nicht mit einem Sprachraum verbunden",
                 "NO_PLAYLIST_REGISTERED": "Sie haben noch keine Playlist aufgenommen\nVerwenden Sie dazu den Befehl `/playlist_hinzufugen`",
                 "SELECT_YOUR_PLAYLIST": "Wählen Sie die Playlist, die Sie abspielen möchten"
+            },
+            "playPlaylist": {
+                "NAME": "playlist",
+                "DESCRIPTION": "Ermöglicht die Auswahl und das Abspielen von Playlists für den Bot",
+                "PLACEHOLDER": "Wählen Sie Ihre Playlist aus",
+                "OPTION_NAME_PLAYLIST": "playlist",
+                "OPTION_DESCRIPTION_PLAYLIST": "Wählen Sie die Playlist, die Sie abspielen möchten",
+                "USER_NOT_IN_VOICE_CHANNEL": "Sie sind nicht mit einem Sprachraum verbunden"
             },
             "addPlaylist": {
                 "NAME": "playlist_hinzufugen",
@@ -292,7 +319,7 @@
                 "DESCRIPTION_OPTION_URL": "Url der Playlist",
                 "INVALID_URL": "Die eingegebene URL ist ungültig <§url§>.",
                 "PLAYLIST_ALREADY_EXIST": "Die Playlist <§url§> ist bereits gespeichert",
-                "PLAYLIST_ADDED":"Die Playlist <§url§> wurde hinzugefügt"
+                "PLAYLIST_ADDED": "Die Playlist <§url§> wurde hinzugefügt"
             }
         },
         "selectMenu": {
