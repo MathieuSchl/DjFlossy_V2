@@ -47,7 +47,7 @@ function getLanguageData(language, tag) {
 module.exports.run = async (client, interaction, user, userData, guild, guildData) => {
     const guildLanguage = guildData.v_language;
     const memberLanguage = userData.v_language;
-    const replyLanguage = memberLanguage ? memberLanguage : guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
+    const replyLanguage = guildLanguage ? guildLanguage : client.config.defaultUserLanguage ? client.config.defaultUserLanguage : "en";
 
     const url = interaction.options.get("url").value;
     const valuePlaylist = getValueFromOption(interaction.options["_hoistedOptions"], "OPTION_NAME_PLAYLIST", guildLanguage);

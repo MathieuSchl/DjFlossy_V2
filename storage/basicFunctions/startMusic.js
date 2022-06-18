@@ -9,6 +9,23 @@ function makeid(length) {
     return result;
 }
 
+async function addToQueue(queue, element, user, addtry){
+    if (addtry < 3) {
+        return new Promise(async (resolve)=>{
+            if (!queue.destroyed) await queue.play("https://www.youtube.com/watch?v=" + element, {
+                requestedBy: user
+            }).catch((err) => {
+                //console.log(err);
+                //console.log("https://www.youtube.com/watch?v=" + element);
+                return addToQueue(queue, element, user, addtry + 1);
+            }).then(() => {
+                resolve(true);
+            })
+        })
+    } else {
+        return false;
+    }
+}
 
 module.exports.addAllSongsFromList = addAllSongsFromList;
 async function addAllSongsFromList(queue, musicList, user, newTockenSet, callback) {
@@ -19,12 +36,7 @@ async function addAllSongsFromList(queue, musicList, user, newTockenSet, callbac
     for (let index = 0; index < musicList.length && index < 50; index++) {
         if (queue.data.token === token) {
             const element = musicList[index];
-            if (!queue.destroyed) await queue.play("https://www.youtube.com/watch?v=" + element, {
-                requestedBy: user
-            }).catch((err) => {
-                console.log(err);
-                console.log("https://www.youtube.com/watch?v=" + element);
-            })
+            addToQueue(queue, element, user, 0)
             if (index === 0 && callback) callback();
         }
     }
