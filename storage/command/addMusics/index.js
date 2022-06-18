@@ -114,7 +114,7 @@ module.exports.getCommandData = async (client, data) => {
     const guild = data.guild;
     let language = data.language;
     language = language ? language : client.config.defaultGuildLanguage ? client.config.defaultGuildLanguage : "en";
-    if (!guild || !config.guildAddSong.includes(guild.id)) return null;
+    if (!guild || !config.guildAdmin.includes(guild.id)) return null;
 
     const dbPrefix = await client.dataBase.get("dbConfiguration").getDbPrefix(client);
     return await new Promise((resolve) => {

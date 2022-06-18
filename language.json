@@ -82,6 +82,14 @@
                 "INVALID_URL": "The entered url is invalid <§url§>",
                 "PLAYLIST_ALREADY_EXIST": "The playlist <§url§> is already saved",
                 "PLAYLIST_ADDED": "The playlist <§url§> has been added"
+            },
+            "reloadCommands": {
+                "NAME": "reloadcommands",
+                "DESCRIPTION": "Allows you to reload server commands",
+                "OPTION_NAME_MUSIC_CMD": "only_music",
+                "OPTION_DESCRIPTION_MUSIC_CMD": "Selection of the music commands",
+                "COMMANDS_RELOAD": "Commands are being reloaded on all servers",
+                "PLAYLIST_COMMAND_RELOAD": "Musics commands are being reloaded on all servers"
             }
         },
         "selectMenu": {
@@ -201,6 +209,14 @@
                 "INVALID_URL": "L'url saisie est invalide <§url§>",
                 "PLAYLIST_ALREADY_EXIST": "La playlist <§url§> est déjà enregistrée",
                 "PLAYLIST_ADDED": "La playlist <§url§> a été ajoutée"
+            },
+            "reloadCommands": {
+                "NAME": "reloadcommands",
+                "DESCRIPTION": "Permet de recharger les commandes serveurs",
+                "OPTION_NAME_MUSIC_CMD": "only_music",
+                "OPTION_DESCRIPTION_MUSIC_CMD": "Selection of the music commands",
+                "COMMANDS_RELOAD": "Les commandes sont en cours de rechargement sur tous les serveurs",
+                "PLAYLIST_COMMAND_RELOAD": "Les commandes `playlists` sont en cours de rechargement sur tous les serveurs"
             }
         },
         "selectMenu": {
@@ -320,6 +336,14 @@
                 "INVALID_URL": "Die eingegebene URL ist ungültig <§url§>.",
                 "PLAYLIST_ALREADY_EXIST": "Die Playlist <§url§> ist bereits gespeichert",
                 "PLAYLIST_ADDED": "Die Playlist <§url§> wurde hinzugefügt"
+            },
+            "reloadCommands": {
+                "NAME": "reloadcommands",
+                "DESCRIPTION": "Ermöglicht das Nachladen von Serverbefehlen",
+                "OPTION_NAME_MUSIC_CMD": "only_music",
+                "OPTION_DESCRIPTION_MUSIC_CMD": "Auswahl von Musikbefehlen",
+                "COMMANDS_RELOAD": "Die Bestellungen werden auf allen Servern neu geladen.",
+                "PLAYLIST_COMMAND_RELOAD": "Die Playlist-Befehle werden auf allen Servern neu geladen."
             }
         },
         "selectMenu": {
