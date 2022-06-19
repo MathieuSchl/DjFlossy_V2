@@ -7,8 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "node index.js 2>&1 | tee ConsoleFile.txt",
-    "dev": "node index.js 2>&1 | tee ConsoleFile.txt",
+    "start": "node index.js 2>&1 | tee ./storage/data/ConsoleFile.txt",
+    "dev": "node index.js 2>&1 | tee ./storage/data/ConsoleFile.txt",
     "test": "node checkLanguage.js",
     "prepareDb": "node importSqlTables.js",
     "startOnServer": "node importSqlTables.js && node index.js"
